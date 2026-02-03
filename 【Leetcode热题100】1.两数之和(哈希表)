@@ -1,0 +1,17 @@
+//2.哈希表，时间复杂度O(n)，空间复杂度O(n)
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+//定义哈希表，存储已遍历元素的值和对应下标
+        unordered_map<int,int> hashtable;
+//单次遍历数组，查找能和当前元素凑成target的已遍历元素
+        for(int i=0;i<nums.size();++i){
+            auto it=hashtable.find(target-nums[i]);
+            if(it!=hashtable.end()){
+                return{it->second,i};
+            }
+            hashtable[nums[i]]=i;
+        }
+        return {};
+    }
+};
